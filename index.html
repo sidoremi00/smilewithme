@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Smile With Me</title>
+    <meta name="title" content="Smile With Me">
+    <meta name="subject" content="스스로 표정을 지어 감정을 배워보아요 :)">
+    <meta name="author" content="최시은">
+    <link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://animalface.site" />
+    <meta property="og:url" content="https://animalface.site" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="동물상 테스트" />
+    <meta property="og:description" content="얼굴로 보는 인공지능 동물상 테스트, 나와 닮은 동물상을 찾아보세요! 대표 동물상 연예인 사진 데이터로 학습한 인공지능이 나의 얼굴로 동물상과 특징을 찾아드립니다. 회원가입도 필요없이 화면에서 바로 확인해보세요! 사진 데이터는 그 어디에도 전송되지 않습니다. 인공지능이 보는 나의 동물상 테스트 한번 해보세요! 강아지상? 고양이상? 여우상? 사슴상? 토끼상? 곰상? 공룡상? 얼굴상 테스트를 통해 나와 닮은 동물 찾기를 할 수 있습니다."
+    />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145482737-6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-145482737-6');
+    </script>
+</head>
+
+<body>
+    <nav class="p-3 container navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="https://animalface.site/">Smile With Me</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Smile With Me
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+        
+            </ul>
+        </div>
+    </nav>
+    <section class="section">
+        <h1 class="title">Smile With Me</h1>
+        <h2 class="subtitle">직접 표정을 지어 감정을 학습해보아요!</h2>
+        <h2 class="sr-only">이 웹사이트는 장애인들이 다양한 얼굴 표정을 인식하고 구별할 수 있도록 돕기 위해 만들어졌습니다.</h2>
+        <h3 class="sr-only">이 웹사이트는 매우 직관적이며 사용하기 쉽습니다.</h3>
+        <h4 class="sr-only">단순히 화면에 나타난 다양한 얼굴 표정을 지으면 해당 표정이 어떤 감정인지 결과값을 나타냅니다.</h4>
+        <p class="sr-only">이렇게 학습한 표정들은 장애인들이 일상에서 다른 사람들의 표정을 인식하는 데 큰 도움이 될 것입니다. 사진 데이터는 그 어디에도 전송되지 않습니다.</p>
+    </section>
+    <section class="youtube pb-3" id="yotube-mid-link">
+        <div class="container mt-3 youtube-cover d-flex flex-row-reverse align-items-center" onclick="gtag(''event_label': '화면 중간'});">
+            <a href="https://www.instagram.com/ewewe._0/" class="youtube-link">@최시은</a>
+        </div>
+    </section>
+    <h3 class="pb-2 d-flex justify-content-center">성별을 선택하세요</h3>
+    <section class="d-flex justify-content-center">
+        <p class="d-flex align-items-center pr-3">여자</p>
+        <div>
+            <input type="checkbox" id="gender">
+            <label for="gender">
+                <span class="knob">
+                    <i></i>
+                </span>
+            </label>
+        </div>
+        <p class="d-flex align-items-center pl-3">남자</p>
+    </section>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <div class="mt-3 container file-upload">
+        <div class="image-upload-wrap">
+            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+            <div class="drag-text">
+                <img src="img/upload.svg" class="mt-5 pt-5 upload">
+                <h3 class="mb-5 pb-5 pt-4  upload-text">얼굴 사진을 올려놓거나 눌러서 업로드하세요!</h3>
+            </div>
+        </div>
+        <div class="file-upload-content">
+            <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+            <div id="loading" class="animated bounce">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="text-center">AI가 당신의 표정을 분석중입니다.</p>
+            </div>
+            <p class="result-message"></p>
+            <div id="label-container" class="d-flex flex-column justify-content-around"></div>
+            <div id="addThis" class="addthis_inline_share_toolbox_6lz1"></div>
+
+            <div class="pt-3 image-title-wrap">
+                <button type="button p-2" class="try-again-btn" onclick="gaReload1();" data-toggle="modal" data-target="#adModal">
+                    <span class="try-again-text">다른 사진으로 재시도</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="coupang" class="container d-flex justify-content-center">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+            new PartnersCoupang.G({
+                "id": 141621,
+                "subId": null
+            });
+        </script>
+    </div> -->
+    <div class="mt-2 container d-flex justify-content-center ad-banner">
+        <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-1ibeto5pa83fn" data-ad-width="320" data-ad-height="100"></ins>
+    </div>
+    <div class="mt-2 container d-flex justify-content-center ad-banner">
+        <ins class="kakao_ad_area" style="display:none;" 
+     data-ad-unit    = "DAN-1jefy9znk6ibb" 
+     data-ad-width   = "300" 
+     data-ad-height  = "250"></ins>
+    </div>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <div class="container pt-3">
+        <div id="disqus_thread"></div>
+    </div>
+    <footer class="footer pt-5 container d-flex justify-content-center">
+        <div>
+            <p>&copy; 최시은 Choi.S.E 2023. All Rights Reserved. </p>
+<!--            
+        <ul class="list-inline d-flex justify-content-center">
+            <li class="list-inline-item">
+                <a href="https://developerdk.tistory.com/46">Privacy</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="https://developerdk.tistory.com/47">Terms</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg">FAQ</a>
+            </li>
+        </ul>
+-->
+        </div>
+    </footer>
+    <!-- Modal -->
+    <div class="modal fade" id="adModal" tabindex="-1" role="dialog" aria-labelledby="adModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adModalLabel">(AD)광고 - 재시도를 한번 더 눌러주세요.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <ins class="kakao_ad_area" style="display:none;" 
+ data-ad-unit    = "DAN-t89oh3sc0ew5" 
+ data-ad-width   = "300" 
+ data-ad-height  = "250"></ins>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button p-2" class="try-again-btn" onclick="gaReload2();">
+                        <span class="try-again-text">다른 사진으로 재시도</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function gaReload1() {
+            gtag('event', '다른 사진으로 재시도 1차', {
+                'event_category': '다른 사진으로 재시도'
+            });
+        }
+        function gaReload2() {
+            gtag('event', '다른 사진으로 재시도 2차', {
+                'event_category': '다른 사진으로 재시도'
+            });
+            window.location.reload();
+        }
+    </script>
+    <script>
+        (function() {
+        var d = document,
+            s = d.createElement('script');
+        s.src = 'https://jocoding.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.image-upload-wrap').hide();
+                    $('#loading').show();
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+                    $('.image-title').html(input.files[0].name);
+                };
+                reader.readAsDataURL(input.files[0]);
+                init().then(function() {
+                    console.log("hello");
+                    predict();
+                    $('#loading').hide();
+                });
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function() {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function() {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
+    <script type="text/javascript">
+        let URL;
+        const urlMale = "https://teachablemachine.withgoogle.com/models/7i9rLC6xH/";
+        const urlFemale = "https://teachablemachine.withgoogle.com/models/7i9rLC6xH/";
+        let model, webcam, labelContainer, maxPredictions;
+        async function init() {
+            if (document.getElementById("gender").checked) {
+                URL = urlMale;
+            } else {
+                URL = urlFemale;
+            }
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) {
+                var element = document.createElement("div")
+                element.classList.add("d-flex");
+                labelContainer.appendChild(element);
+            }
+        }
+        async function predict() {
+            var image = document.getElementById("face-image")
+            const prediction = await model.predict(image, false);
+            prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+            console.log(prediction[0].className);
+            var resultTitle, resultExplain, resultCeleb;
+            if (document.getElementById("gender").checked) {
+                gtag('event', '표정 테스트 수행', {
+                    'event_category': '표정 테스트 수행',
+                    'event_label': '남자'
+                });
+                switch (prediction[0].className) {
+                    case "smile":
+                        resultTitle = "당신은 지금 웃고 있는 것 같아요!"
+                        resultExplain = "웃음 짓는 순간에는 기쁨과 즐거움을 느끼는 경우가 많습니다! 웃는 사람이 다정한 상호작용이나 칭찬을 받았을 때, 농담이나 웃긴 상황을 경험했을 때, 또는 자신이나 주변 사람들의 어려움을 극복했을 때 웃음 짓는 경우가 많습니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 행복, 기쁨, 벅참, 뿌듯함"
+                        gtag('event', '남자 결과 😀', {'event_category': '남자 결과'});
+                        break;
+                    case "sad":
+                        resultTitle = "당신은 지금 속상해보이는군요."
+                        resultExplain = "기분이 다운되어 보이는 당신, 우는 사람이 느끼는 감정은 다양합니다. 대체로 울음은 슬픔, 아픔, 분노, 불안 등의 감정을 나타내는 신호로서 작용합니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 슬픔, 아픔, 분노, 불안, 외로움, 고통"
+                        gtag('event', '남자 결과 😞', {'event_category': '남자 결과'});
+                        break;
+                    case "angry":
+                        resultTitle = "당신은 지금 화나보이는군요."
+                        resultExplain = "화, 분노는 감정이 과도하게 표현되면 상황을 악화시킬 수도 있으므로, 감정을 효과적으로 관리하는 것이 중요합니다!"
+                        resultCeleb = "대표적으로 느끼는 감정: 분노, 불안, 심각, 실망, 무력감"
+                        gtag('event', '남자 결과 😡', {'event_category': '남자 결과'});
+                        break;
+                    case "tired":
+                        resultTitle = "당신은 지금 피곤해보여요!"
+                        resultExplain = "하품은 일반적으로 숨쉬는 것과 관련된 생리적 반응으로, 뇌의 산소 공급을 유지하기 위해 발생합니다. 피로하거나 지쳤을 때 하품을 하기 쉬우므로, 하품은 피로감이나 지친 상태에서 자연스럽게 발생할 수 있습니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 피곤함, 지침, 지루한, 긴장한"
+                        gtag('event', '남자 결과 🥱', {'event_category': '남자 결과'});
+                        break;
+                    case "blank":
+                        resultTitle = "이건 무표정인 것 같은데요~?"
+                        resultExplain = "일반적으로 무표정은 감정을 감추거나 숨기는 것이라고 생각할 수 있습니다. 또한, 무표정을 짓는 것은 때로는 감정이나 경험을 처리하기 위한 전략으로도 사용됩니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 긴장, 불안, 자기보호, 감정조절, 편안함"
+                        gtag('event', '남자 결과 😐', {'event_category': '남자 결과'});
+                        break;
+                    default:
+                        resultTitle = "당신은 지금 정말 즐거워보여요!"
+                        resultExplain = "신난 사람이 느끼는 감정은 매우 긍정적이고 활기찬 감정입니다. 일반적으로 신남은 좋은 일이나 즐거운 상황에서 발생하며, 이는 대개 어떤 일이 성취되거나 기대한 것이 이루어졌을 때 혹은 좋은 소식을 들었을 때 발생합니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 신남, 기쁜, 즐거운, 자신감, 기대하는"
+                        gtag('event', '남자 결과 😝', {'event_category': '남자 결과'});
+                }
+            } else {
+                gtag('event', '표정 테스트 수행', {
+                    'event_category': '표정 테스트 수행',
+                    'event_label': '여자'
+                });
+                switch (prediction[0].className) {
+                    case "smile":
+                        resultTitle = "당신은 지금 웃고 있는 것 같아요!"
+                        resultExplain = "웃음 짓는 순간에는 기쁨과 즐거움을 느끼는 경우가 많습니다! 웃는 사람이 다정한 상호작용이나 칭찬을 받았을 때, 농담이나 웃긴 상황을 경험했을 때, 또는 자신이나 주변 사람들의 어려움을 극복했을 때 웃음 짓는 경우가 많습니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 행복, 기쁨, 벅참, 뿌듯함 등"
+                        gtag('event', '여자 결과 😀', {'event_category': '여자 결과'});
+                        break;
+                    case "sad":
+                        resultTitle = "당신은 지금 속상해보이는군요."
+                        resultExplain = "기분이 다운되어 보이는 당신, 우는 사람이 느끼는 감정은 다양합니다. 대체로 울음은 슬픔, 아픔, 분노, 불안 등의 감정을 나타내는 신호로서 작용합니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 슬픔, 아픔, 분노, 불안, 외로움, 고통 등"
+                        gtag('event', '여자 결과 😞', {'event_category': '여자 결과'});
+                        break;
+                    case "angry":
+                        resultTitle = "당신은 지금 화나보이는군요."
+                        resultExplain = "화, 분노는 감정이 과도하게 표현되면 상황을 악화시킬 수도 있으므로, 감정을 효과적으로 관리하는 것이 중요합니다!"
+                        resultCeleb = "대표적으로 느끼는 감정: 분노, 불안, 심각, 실망, 무력감 등"
+                        gtag('event', '여자 결과 😡', {'event_category': '여자 결과'});
+                        break;
+                    case "tired":
+                        resultTitle = "당신은 지금 피곤해보여요!"
+                        resultExplain = "하품은 일반적으로 숨쉬는 것과 관련된 생리적 반응으로, 뇌의 산소 공급을 유지하기 위해 발생합니다. 피로하거나 지쳤을 때 하품을 하기 쉬우므로, 하품은 피로감이나 지친 상태에서 자연스럽게 발생할 수 있습니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 피곤함, 지침, 지루한, 긴장한 등"
+                        gtag('event', '여자 결과 🥱', {'event_category': '여자 결과'});
+                        break;
+                    case "blank":
+                        resultTitle = "이건 무표정인 것 같은데요~?"
+                        resultExplain = "일반적으로 무표정은 감정을 감추거나 숨기는 것이라고 생각할 수 있습니다. 또한, 무표정을 짓는 것은 때로는 감정이나 경험을 처리하기 위한 전략으로도 사용됩니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 긴장, 불안, 자기보호, 감정조절, 편안함 등"
+                        gtag('event', '여자 결과 😐', {'event_category': '여자 결과'});
+                        break;
+                    default:
+                        resultTitle = "당신은 지금 놀란 것 같아요!"
+                        resultExplain = "놀란 사람이 느끼는 감정은 예기치 않은 상황에 대한 충격과 깜짝 놀람입니다. 놀란 순간에는 매우 강한 자극을 받기 때문에 놀라움에 대한 첫 번째 반응은 일시적으로 멈추어 버리거나, 긴장하거나, 반사적으로 움직이는 등의 행동을 보입니다."
+                        resultCeleb = "대표적으로 느끼는 감정: 놀람, 당황함, 두려움 등"
+                        gtag('event', '여자 결과 😝', {'event_category': '여자 결과'});
+                }
+            }
+            var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>"
+            var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
+            var celeb = "<div class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</div>"
+            $('.result-message').html(title + explain + celeb);
+            var barWidth;
+            for (let i = 0; i < maxPredictions; i++) {
+                if (prediction[i].probability.toFixed(2) > 0.1) {
+                    barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+                } else if (prediction[i].probability.toFixed(2) >= 0.01) {
+                    barWidth = "4%"
+                } else {
+                    barWidth = "2%"
+                }
+                var labelTitle;
+                switch (prediction[i].className) {
+                    case "smile":
+                        labelTitle = "행복한"
+                        break;
+                    case "angry":
+                        labelTitle = "화난"
+                        break;
+                    case "sad":
+                        labelTitle = "슬픈"
+                        break;
+                    case "surprise":
+                        labelTitle = "놀란"
+                        break;
+                    case "tired":
+                        labelTitle = "피곤한"
+                        break;
+                    case "blank":
+                        labelTitle = "무표정"
+                        break;
+                    default:
+                        labelTitle = "알수없음"
+                }
+                var label = "<div class='animal-label d-flex align-items-center'>" + labelTitle + "</div>"
+                var bar = "<div class='bar-container position-relative container'><div class='" + prediction[i].className + "-box'></div><div class='d-flex justify-content-center align-items-center " + prediction[i].className + "-bar' style='width: " + barWidth + "'><span class='d-block percent-text'>" + Math.round(prediction[i].probability.toFixed(2) * 100) + "%</span></div></div>"
+                labelContainer.childNodes[i].innerHTML = label + bar;
+            }
+        }
+    </script>
+    <script>
+        function iosApp() {
+            document.getElementById("coupang").style.display="none";
+            $("#coupang ins").hide();
+            document.getElementById("addThis").style.display="none";
+            document.getElementById("disqus_thread").style.display="none";
+            var kakao = document.getElementsByClassName("kakao_ad_area");
+            for (var i = 0; i < kakao.length; i++) {
+              if(kakao[i]) {
+                  kakao[i].style.display="none";
+              }
+            }
+            document.getElementById("yotube-top-link").style.display="none";
+            document.getElementById("yotube-mid-link").style.display="none";
+            document.getElementById("yotube-bottom-link").style.display="none";
+        }
+    </script>
+</body>
+<!-- 
+image input box
+Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+gender toggle
+Copyright (c) 2020 by Mert Cukuren (https://codepen.io/knyttneve/pen/bPpEZY)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ -->
+
+</html>
